@@ -4,7 +4,7 @@
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 
 # Used to interact with config git repo in home
-alias config='/usr/bin/git --git-dir=/Users/jha/.cfg/ --work-tree=/Users/jha'
+alias dotfiles='/usr/bin/git --git-dir=/Users/jha/.cfg/ --work-tree=/Users/jha'
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
