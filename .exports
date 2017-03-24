@@ -1,0 +1,12 @@
+#!/usr/bin/sh
+
+# Make vim the default editor
+export EDITOR="vim"
+
+# Highlight section titles in man pages
+
+export LESS_TERMCAP_md="${yellow}";
+
+# Keep showing man page after exit
+
+export MANPAGER='less -X';
