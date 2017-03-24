@@ -1,12 +1,12 @@
 #!/bin/sh
 
-echo "Installing packages and apps through brew/mas"
-
 # Check for Homebrew and install if we don't have it
 if test !$(which brew); then
   echo "brew is not installed. Installing now..."
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
+
+echo "Installing packages and apps through brew/mas"
 
 # Update Homebrew Recipes
 brew update

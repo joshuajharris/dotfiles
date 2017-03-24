@@ -24,7 +24,8 @@ n latest
 # Package manages and packages
 sh ./brew.sh
 # sh ./gem.sh
-# sh ./npm.sh
+sh ./npm.sh
+sh ./apm.sh
 
 # Install oh-my-zsh
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh

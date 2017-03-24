@@ -1,0 +1,54 @@
+"*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "dd92d0d3-a10a-4a28-a23e-72c8b1f02758"
+    js:
+      beautify_on_save: true
+      disabled: true
+      indent_size: 2
+  "atom-material-ui":
+    fonts: {}
+  "atom-pair": {}
+  "autocomplete-python":
+    useKite: false
+  "close-tags": {}
+  core:
+    disabledPackages: [
+      "atom-pair"
+      "linter-tidy"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "atom-material-syntax"
+    ]
+  docblockr: {}
+  editor:
+    fontSize: 16
+    invisibles:
+      cr: "⏎"
+    showIndentGuide: true
+    showInvisibles: true
+    tabType: "soft"
+  "exception-reporting":
+    userId: "2839fd95-bf16-6537-bc34-3230e4675c10"
+  "file-icons":
+    coloured: false
+  "language-babel":
+    autoIndentJSX: true
+  linter:
+    errorPanelHeight: 96
+    showErrorPanel: false
+  "linter-eslint":
+    fixOnSave: true
+  "make-runner": {}
+  "node-debugger":
+    debugPort: 8080
+    nodePath: "/usr/local/bin/node"
+  "one-dark-ui": {}
+  "python-autopep8": {}
+  "remote-edit": {}
+  "tree-view": {}
+  "vim-mode": {}
+  welcome:
+    showOnStartup: false
