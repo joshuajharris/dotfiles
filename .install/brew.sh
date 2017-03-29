@@ -75,7 +75,6 @@ brew cask install "${fonts[@]}"
 
 # Install Mac App Store apps
 storeApps=(
-  ["937984704"]="Amphetamine"
   ["1055511498"]="Day One"
   ["924726344"]="Deliveries"
   ["975937182"]="Fantastical 2"
