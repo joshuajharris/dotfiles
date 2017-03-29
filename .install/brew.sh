@@ -55,7 +55,6 @@ apps=(
   cleanmymac
   cloud
   dash
-  flux
   google-chrome
   google-drive
   hyper
