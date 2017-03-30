@@ -33,26 +33,33 @@ inoremap jk <esc>
 set nocompatible
 filetype off 
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+"---------- PLUGINS ----------"
 
-Bundle 'gmarik/vundle' 
-Bundle 'vim-scripts/AutoComplPop'
-Bundle 'scrooloose/nerdtree'
-Bundle 'bling/vim-airline'
-"Bundle 'scrooloose/syntastic'
+call plug#begin('~/.vim/plugged')
+
+Plug 'bling/vim-airline' " Lean & mean status/tabline for vim
+Plug 'junegunn/fzf' " Lean & mean status/tabline for vim
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'} " tree explorer plugin for vim
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround' " quoting/parenthesizing made simple
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Raimondi/delimitMate'
+Plug 'sheerun/vim-polyglot'
+Plug 'airblade/vim-gitgutter'
+Plug 'w0rp/ale'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'maksimr/vim-jsbeautify'
+" Plug 'ryanoasis/vim-devicons'
+
+" Vim Markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+call plug#end()
 
 map <C-n> :NERDTreeToggle<CR>
+set encoding=utf8
 let g:airline#extensions#tabline#enabled = 1
-
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-
-filetype plugin indent on 
-syntax on
+" let g:airline_powerline_fonts = 1

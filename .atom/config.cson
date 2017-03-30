@@ -22,6 +22,7 @@
       "one-dark-ui"
       "atom-material-syntax"
     ]
+    useCustomTitleBar: true
   docblockr: {}
   editor:
     fontSize: 16
@@ -36,9 +37,7 @@
     coloured: false
   "language-babel":
     autoIndentJSX: true
-  linter:
-    errorPanelHeight: 96
-    showErrorPanel: false
+  linter: {}
   "linter-eslint":
     fixOnSave: true
   "make-runner": {}
