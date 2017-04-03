@@ -1,0 +1,66 @@
+/*
+ * Your Stylesheet
+ *
+ * This stylesheet is loaded when Atom starts up and is reloaded automatically
+ * when it is changed and saved.
+ *
+ * Add your own CSS or Less to fully customize Atom.
+ * If you are unfamiliar with Less, you can read more about it here:
+ * http://lesscss.org
+ */
+/*
+ * Examples
+ * (To see them, uncomment and save)
+ */
+// style the background color of the tree view
+
+.tree-view {
+  // background-color: whitesmoke;
+}
+
+atom-text-editor {
+    font-family: 'Fira Code';
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+}
+
+atom-text-editor.editor {
+    .syntax--string.syntax--quoted,
+    .syntax--string.syntax--regexp {
+        -webkit-font-feature-settings: "liga" off, "calt" off;
+    }
+
+    .syntax--source.syntax--js.syntax--jsx > .syntax--keyword.syntax--control.syntax--flow.syntax--js,
+    .syntax--storage,
+    .syntax--entity.syntax--other.syntax--attribute-name.syntax--jsx,
+    .syntax--entity.syntax--other.syntax--attribute-name.syntax--html,
+    .syntax--type .syntax--function {
+        vertical-align: baseline;
+        font-family: 'flottflott';
+        height: inherit;
+        font-size: 1.5em;
+        line-height: 1rem;
+    }
+
+    .syntax--storage.syntax--type.syntax--function.syntax--arrow.syntax--js {
+        font-size: 1.5em;
+        line-height: 1rem;
+    }
+
+    .syntax--comment {
+        font-style: italic;
+    }
+
+    .syntax--source.syntax--js.syntax--jsx > .syntax--keyword.syntax--control.syntax--flow.syntax--js {
+        font-family: 'Fira Code';
+        font-style: normal;
+    }
+
+    .syntax--string.syntax--unquoted.syntax--js {
+        color: #CDD3DE;
+    }
+
+    .syntax--entity.syntax--name {
+        font-weight: bold;
+    }
+}

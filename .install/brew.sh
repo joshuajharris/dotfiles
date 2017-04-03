@@ -70,6 +70,7 @@ brew cask install "${apps[@]}"
 fonts=(
   font-roboto
   font-hack-nerd-font
+  font-fira-code
 )
 
 brew cask install "${fonts[@]}"

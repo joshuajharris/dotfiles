@@ -7,7 +7,12 @@
       disabled: true
       indent_size: 2
   "atom-material-ui":
+    colors: {}
     fonts: {}
+    tabs: {}
+    treeView:
+      compactList: true
+    ui: {}
   "atom-pair": {}
   "autocomplete-python":
     useKite: false
@@ -19,8 +24,8 @@
     ]
     telemetryConsent: "no"
     themes: [
-      "one-dark-ui"
-      "atom-material-syntax"
+      "atom-material-ui"
+      "atom-material-syntax-dark"
     ]
     useCustomTitleBar: true
   docblockr: {}
@@ -40,6 +45,7 @@
   linter: {}
   "linter-eslint":
     fixOnSave: true
+  "linter-ui-default": {}
   "make-runner": {}
   "node-debugger":
     debugPort: 8080
