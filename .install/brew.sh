@@ -22,10 +22,12 @@ bins=(
   ack
   boot2docker
   docker
+  fzf
   git
   jsonpp
   mas
   mongodb
+  neofetch
   pv
   pyenv
   rsync
@@ -40,6 +42,11 @@ bins=(
 )
 
 brew install "${bins[@]}"
+
+
+if test !$(which fzf); then
+  /usr/local/opt/fzf/install
+fi
 
 # Apps
 brew tap caskroom/cask

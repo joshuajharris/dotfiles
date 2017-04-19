@@ -27,7 +27,7 @@
       "atom-material-ui"
       "atom-material-syntax-dark"
     ]
-    useCustomTitleBar: true
+    titleBar: "custom"
   docblockr: {}
   editor:
     fontSize: 16

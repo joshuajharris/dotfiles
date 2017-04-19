@@ -4,7 +4,8 @@ module.exports = {
     fontSize: 14,
 
     // font family with optional fallbacks
-    fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    //fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    fontFamily: '"Roboto Mono", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: 'rgba(248,28,229,0.8)',
@@ -79,7 +80,7 @@ module.exports = {
     bell: 'SOUND',
 
     // if true, selected text will automatically be copied to the clipboard
-    copyOnSelect: false
+    copyOnSelect: false,
 
     // if true, on right click selected text will be copied or pasted if no
     // selection is present (true by default on Windows)
@@ -89,6 +90,10 @@ module.exports = {
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
+    alwaysOnTop: {
+      debug: false,
+      default: false
+    },
   },
 
   // a list of plugins to fetch and install from npm
@@ -97,7 +102,19 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ['hyper-snazzy', 'hyperpower', 'hyper-blink', 'hyperminimal', 'hyperlinks', 'hyperterm-tab-icons', 'hyperborder', 'hypercwd'],
+  plugins: [
+    'hyper-snazzy',
+    'hyperpower',
+    'hyper-blink',
+    'hyperminimal',
+    'hyperlinks',
+    'hyperterm-tab-icons',
+    'hyperborder',
+    'hypercwd',
+    'hyper-always-on-top',
+    'hyper-statusline',
+    'hyperterm-paste',
+  ],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
