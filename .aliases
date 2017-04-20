@@ -11,3 +11,9 @@ alias reload="exec $SHELL -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# tmux Aliases
+alias tls='tmux list-session'
+alias tks='tmux kill-session -t'
+alias tas='tmux attach -t'
+alias tss='tmux switch -t'

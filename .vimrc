@@ -31,14 +31,15 @@ set backspace=indent,eol,start
 inoremap jk <esc>
 
 set nocompatible
-filetype off 
+filetype plugin on
 
 "---------- PLUGINS ----------"
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'bling/vim-airline' " Lean & mean status/tabline for vim
-Plug 'junegunn/fzf' " Lean & mean status/tabline for vim
+Plug 'vim-airline/vim-airline' " Lean & mean status/tabline for vim
+Plug 'vim-airline/vim-airline-themes' " Airline Plugins
+Plug 'junegunn/fzf' " fuzzysearch
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'} " tree explorer plugin for vim
@@ -57,9 +58,11 @@ Plug 'maksimr/vim-jsbeautify'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
+Plug 'suan/vim-instant-markdown'
+
 call plug#end()
 
 map <C-n> :NERDTreeToggle<CR>
 set encoding=utf8
 let g:airline#extensions#tabline#enabled = 1
-" let g:airline_powerline_fonts = 1
+set laststatus=2

@@ -1,6 +1,10 @@
-# joshuajharris's dotfiles(**WIP**)
+# Joshua Harris's dotfiles(**WIP**)
 ------------
-My personal system configuration for if I had to move to another machine for whatever ungodly reason.
+My personal system configuration.
+
+For the ungodly circumstance where my computer shits the bed.
+
+Or the wonderful circumstance where I buy a better computer.
 
 ## Table of Contents
 * [Installation](#installation)

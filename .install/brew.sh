@@ -24,6 +24,7 @@ bins=(
   docker
   fzf
   git
+  htop
   jsonpp
   mas
   mongodb
