@@ -17,6 +17,11 @@ else
   echo "brew is already installed!"
 fi
 
+# suppress welcome message
+if [ ! -f $HOME/.hushlogin ]; then
+  touch $HOME/.hushlogin
+fi
+
 # Install n to manage node versions
 curl -L https://git.io/n-install | bash
 n latest

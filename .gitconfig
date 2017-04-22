@@ -1,6 +1,18 @@
+#    ▄██████▄   ▄█      ███
+#   ███    ███ ███  ▀█████████▄
+#   ███    █▀  ███▌    ▀███▀▀██
+#  ▄███        ███▌     ███   ▀
+# ▀▀███ ████▄  ███▌     ███
+#   ███    ███ ███      ███
+#   ███    ███ ███      ███
+#   ████████▀  █▀      ▄████▀
+
+[user]
+  name = Joshua Harris
+  email = joshua.jharris13@gmail.com
+
 [alias]
 	l = log
-
   s = status -s
 
 [apply]
@@ -20,7 +32,3 @@ whitespace = fix
 
 	# Automatically correct and execute mistyped commands
 	autocorrect = 1
-
-[user]
-  name = Joshua Harris
-  email = joshua.jharris13@gmail.com

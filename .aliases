@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+   #▄████████  ▄█        ▄█     ▄████████    ▄████████
+  #███    ███ ███       ███    ███    ███   ███    ███
+  #███    ███ ███       ███▌   ███    ███   ███    █▀
+  #███    ███ ███       ███▌   ███    ███   ███
+#▀███████████ ███       ███▌ ▀███████████ ▀███████████
+  #███    ███ ███       ███    ███    ███          ███
+  #███    ███ ███▌    ▄ ███    ███    ███    ▄█    ███
+  #███    █▀  █████▄▄██ █▀     ███    █▀   ▄████████▀
+             #▀
+
 # Google Chrome
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 
@@ -17,3 +27,10 @@ alias tls='tmux list-session'
 alias tks='tmux kill-session -t'
 alias tas='tmux attach -t'
 alias tss='tmux switch -t'
+
+# colorized cat
+alias cat="ccat"
+
+alias ssh="TERM=xterm-256color ssh"
+
+alias serve="http-server . -p 8080 -o"

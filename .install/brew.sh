@@ -66,6 +66,7 @@ apps=(
   google-chrome
   google-drive
   hyper
+  iterm2
   postman
   rightfont
   sketch
@@ -85,16 +86,19 @@ brew cask install "${fonts[@]}"
 
 # Install Mac App Store apps
 storeApps=(
+  ["1091189122"]="Bear"
   ["1055511498"]="Day One"
   ["924726344"]="Deliveries"
   ["975937182"]="Fantastical 2"
   ["1026566364"]="GoodNotes"
   ["441258766"]="Magnet"
   ["928871589"]="Noizio"
+  ["568494494"]="Pocket"
   ["957810159"]="Raindrop.io"
   ["507257563"]="Sip"
   ["803453959"]="Slack"
   ["1176895641"]="Spark"
+  ["585829637"]="Todoist"
   ["623795237"]="Ulysses"
   ["497799835"]="Xcode"
 )
