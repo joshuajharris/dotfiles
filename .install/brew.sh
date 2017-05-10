@@ -21,6 +21,7 @@ brew install vim --with-override-system-vi
 bins=(
   ack
   boot2docker
+  ccat
   docker
   fzf
   git
@@ -78,7 +79,7 @@ brew cask install "${apps[@]}"
 
 fonts=(
   font-roboto
-  font-hack-nerd-font
+  font-droidsansmono-nerd-font
   font-fira-code
 )
 
@@ -91,7 +92,9 @@ storeApps=(
   ["924726344"]="Deliveries"
   ["975937182"]="Fantastical 2"
   ["1026566364"]="GoodNotes"
+  ["409183694"]="Keynote"
   ["441258766"]="Magnet"
+  ["992076693"]="MindNode"
   ["928871589"]="Noizio"
   ["568494494"]="Pocket"
   ["957810159"]="Raindrop.io"
@@ -99,6 +102,7 @@ storeApps=(
   ["803453959"]="Slack"
   ["1176895641"]="Spark"
   ["585829637"]="Todoist"
+  ["557168941"]="Tweetbot"
   ["623795237"]="Ulysses"
   ["497799835"]="Xcode"
 )

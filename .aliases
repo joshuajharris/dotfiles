@@ -28,6 +28,8 @@ alias tks='tmux kill-session -t'
 alias tas='tmux attach -t'
 alias tss='tmux switch -t'
 
+alias cwd='pwd | pbcopy;pbpaste'
+
 # colorized cat
 alias cat="ccat"
 

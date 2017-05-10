@@ -111,7 +111,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'w0rp/ale'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'maksimr/vim-jsbeautify'
-" Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 
 " Vim Markdown
 Plug 'godlygeek/tabular'
@@ -124,5 +124,14 @@ call plug#end()
 map <C-n> :NERDTreeToggle<CR>
 let g:airline#extensions#tabline#enabled = 1
 
+" iterm has a non-ascii character font setting
+"set guifont=DroidSansMonoForPowerline\ Nerd\ Font:h11
+
 colorscheme gruvbox
 let g:airline_theme='gruvbox'
+
+let g:airline_powerline_fonts = 1
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
