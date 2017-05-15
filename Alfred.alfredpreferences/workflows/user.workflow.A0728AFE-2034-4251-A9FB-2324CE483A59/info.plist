@@ -150,6 +150,10 @@
 				<integer>0</integer>
 				<key>argument</key>
 				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
 				<key>hotkey</key>
 				<integer>0</integer>
 				<key>hotmod</key>
@@ -282,6 +286,10 @@
 				<integer>0</integer>
 				<key>argument</key>
 				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
 				<key>hotkey</key>
 				<integer>0</integer>
 				<key>hotmod</key>
@@ -404,6 +412,20 @@
 	<string>Changelog
 =========
 
+Version 1.6 – 2017-05-07
+------------------------
+
+### Features
+
+* new command `gh user/repo projects` (@dagio)
+* new command `gh my pulls review requested` (@AeroEchelon)
+* better sorting for issues (most recently updated on top) and commits (most recent on top) (@danielma)
+
+### Bugfixes
+
+* On macOS 10.12.5 Beta URLs didnt opened in browser anymore
+
+
 Version 1.5 – 2016-12-13
 ------------------------
 
@@ -417,7 +439,7 @@ Version 1.5 – 2016-12-13
 ### Bugfixes
 
 * in some situations private repos were missing (@lxynox)
-* after saving GitHub Enterprise url the workflow didn't reopen correctly
+* after saving GitHub Enterprise url the workflow didnt reopen correctly
 * updated user sub commands (Activity tab does not exist any more on GitHub)
 
 
@@ -568,7 +590,7 @@ Version 1.1 – 2015-01-10
 		<string>0</string>
 	</dict>
 	<key>version</key>
-	<string>1.5</string>
+	<string>1.6</string>
 	<key>webaddress</key>
 	<string>https://github.com/gharlan/alfred-github-workflow</string>
 </dict>
