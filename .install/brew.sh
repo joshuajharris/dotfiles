@@ -20,6 +20,7 @@ brew install vim --with-override-system-vi
 # Binaries
 bins=(
   ack
+  bash
   boot2docker
   ccat
   docker
@@ -60,6 +61,7 @@ apps=(
   alfred
   atom
   bartender
+  bitbar
   cheatsheet
   cleanmymac
   cloud

@@ -98,6 +98,7 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline' " Lean & mean status/tabline for vim
 Plug 'vim-airline/vim-airline-themes' " Airline Plugins
 Plug 'junegunn/fzf' " fuzzysearch
+Plug 'fatih/vim-go' " golan support
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'} " tree explorer plugin for vim

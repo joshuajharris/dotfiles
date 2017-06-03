@@ -56,6 +56,8 @@ plugins=(git)
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
+export PATH=$PATH:"/usr/local/go/bin"
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -97,5 +99,7 @@ autoload -U promptinit; promptinit
 prompt pure
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export GOPATH=~/go
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
