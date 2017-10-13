@@ -32,7 +32,7 @@ set sidescroll=1    " smoother horizontal scrolling
 set sidescrolloff=5 " keep at least 5 lines left/right
 set splitbelow      " create new splits below
 set splitright      " create new splits to the right
-set termguicolors   " enable true colors
+" set termguicolors   " enable true colors
 set wildmenu        " visual autocomplete for command menu
 
 " whitespace
@@ -101,11 +101,15 @@ Plug 'junegunn/fzf' " fuzzysearch
 Plug 'fatih/vim-go' " golan support
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'pangloss/vim-javascript'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'} " tree explorer plugin for vim
 Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround' " quoting/parenthesizing made simple
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 Plug 'Raimondi/delimitMate'
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
@@ -123,6 +127,8 @@ Plug 'suan/vim-instant-markdown'
 call plug#end()
 
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+
 let g:airline#extensions#tabline#enabled = 1
 
 " iterm has a non-ascii character font setting

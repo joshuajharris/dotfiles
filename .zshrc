@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jha/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,14 +49,12 @@ ZSH_THEME=""
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/n/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
-
-export PATH=$PATH:"/usr/local/go/bin"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,13 +91,25 @@ for file in ~/.{exports,aliases,functions}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
+
+fpath+=($fpath '/usr/local/lib/node_modules/pure-prompt/functions')
 
 autoload -U promptinit; promptinit
 prompt pure
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-export GOPATH=~/go
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export GOPATH=$HOME/go
+export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/joshuajharris/n/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/joshuajharris/n/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/joshuajharris/n/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/joshuajharris/n/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh

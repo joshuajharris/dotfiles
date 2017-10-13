@@ -1,5 +1,8 @@
 # Joshua Harris's dotfiles(**WIP**)
 ------------
+Setting up dotfiles as a git bare repo in the home directory
+https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+
 My personal system configuration.
 
 For the ungodly circumstance where my computer shits the bed.

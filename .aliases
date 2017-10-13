@@ -10,11 +10,25 @@
   #███    █▀  █████▄▄██ █▀     ███    █▀   ▄████████▀
              #▀
 
-# Google Chrome
-alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+if [[ $OSTYPE == "darwin" ]]; then
+  # Google Chrome
+  alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+fi
+
+if [[ $OSTYPE == "linux-gnu" ]]; then
+  alias pbcopy='xclip -selection clipboard'
+  alias pbpaste='xclip -selection clipboard -o'
+fi
+
+# go to ~/Developer
+alias dev='cd ~/Developer'
+alias scripts='cd ~/Developer/scripts'
+
+alias rmdocker='docker rm $(docker ps -a -q)'
+alias rmidocker='docker rmi $(docker images -q)'
 
 # Used to interact with config git repo in home
-alias dotfiles='/usr/bin/git --git-dir=/Users/jha/.cfg/ --work-tree=/Users/jha'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
@@ -33,6 +47,9 @@ alias cwd='pwd | pbcopy;pbpaste'
 # colorized cat
 alias cat="ccat"
 
+alias serve="http-server . -p 8080 -o"
+
 alias ssh="TERM=xterm-256color ssh"
 
-alias serve="http-server . -p 8080 -o"
+alias tmuxrc="vim ~/.tmuxrc"
+alias vimrc="vim ~/.vimrc"
