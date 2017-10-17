@@ -1,20 +1,11 @@
 #!/bin/sh
 
-echo "Setting up Mac..."
-
-# Check that xcode commande line tools are installed
-if  [[ $(xcode-select -p) != "/Applications/Xcode.app/Contents/Developer" ]]; then
-  echo "Installing Xcode Command Line Tools"
-  xcode-select --install
-else
-  echo "Xcode Command Line Tools are already installed!"
+if [[ $OSTYPE == "darwin" ]]; then
+  sh ./macos.sh
 fi
 
-# Check for Homebrew and install if we don't have it
-if test !$(which brew); then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-else
-  echo "brew is already installed!"
+if [[ $OSTYPE == "linux-gnu" ]]; then
+  sh ./linux.sh
 fi
 
 # suppress welcome message
@@ -31,6 +22,7 @@ sh ./brew.sh
 # sh ./gem.sh
 sh ./npm.sh
 sh ./apm.sh
+sh ./go.sh
 
 # Install oh-my-zsh
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
