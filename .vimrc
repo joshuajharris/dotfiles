@@ -117,6 +117,8 @@ Plug 'w0rp/ale'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'ryanoasis/vim-devicons'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dhruvasagar/vim-table-mode'
 
 " Vim Markdown
 Plug 'godlygeek/tabular'
@@ -128,6 +130,8 @@ call plug#end()
 
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 let g:airline#extensions#tabline#enabled = 1
 

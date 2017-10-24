@@ -24,6 +24,8 @@ fi
 alias dev='cd ~/Developer'
 alias scripts='cd ~/Developer/scripts'
 
+alias back='cd -'
+
 alias rmdocker='docker rm $(docker ps -a -q)'
 alias rmidocker='docker rmi $(docker images -q)'
 
@@ -42,7 +44,8 @@ alias tks='tmux kill-session -t'
 alias tas='tmux attach -t'
 alias tss='tmux switch -t'
 
-alias cwd='pwd | pbcopy;pbpaste'
+alias ywd='pwd | pbcopy;echo "copied `pbpaste` to clipboard"'
+alias pbwd='cd `pbpaste`'
 
 # colorized cat
 alias cat="ccat"
@@ -51,5 +54,5 @@ alias serve="http-server . -p 8080 -o"
 
 alias ssh="TERM=xterm-256color ssh"
 
-alias tmuxrc="vim ~/.tmuxrc"
+alias tmuxrc="vim ~/.tmux.conf"
 alias vimrc="vim ~/.vimrc"
