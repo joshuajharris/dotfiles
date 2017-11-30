@@ -22,7 +22,7 @@ sh ./brew.sh
 # sh ./gem.sh
 sh ./npm.sh
 sh ./apm.sh
-sh ./go.sh
+# sh ./go.sh
 
 # Install oh-my-zsh
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh

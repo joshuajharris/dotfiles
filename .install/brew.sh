@@ -22,7 +22,6 @@ bins=(
   ack
   bash
   boot2docker
-  ccat
   docker
   fzf
   git
@@ -30,6 +29,8 @@ bins=(
   jsonpp
   mas
   mongodb
+  mps-youtube
+  mpv
   neofetch
   pv
   pyenv
@@ -40,6 +41,7 @@ bins=(
   vim
   watch
   xz
+  youtube-dl
   zsh
   zsh-syntax-highlighting
 )
