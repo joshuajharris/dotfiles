@@ -105,6 +105,10 @@ prompt pure
 export GOPATH=$HOME/go
 export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
 
+if [[ $OSTYPE == "linux-gnu" ]]; then
+  export PATH="$PATH:/snap/bin"
+fi
+
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 # tabtab source for serverless package

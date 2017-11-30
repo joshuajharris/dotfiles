@@ -110,6 +110,7 @@ Plug 'tpope/vim-surround' " quoting/parenthesizing made simple
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
+Plug 'cakebaker/scss-syntax.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
@@ -119,10 +120,15 @@ Plug 'maksimr/vim-jsbeautify'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'gorodinskiy/vim-coloresque'
+
+Plug 'leafo/moonscript-vim'
 
 " Vim Markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'junegunn/goyo.vim'
+Plug 'reedes/vim-pencil'
 
 Plug 'suan/vim-instant-markdown'
 
@@ -134,6 +140,8 @@ let NERDTreeShowHidden=1
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 let g:airline#extensions#tabline#enabled = 1
+
+let NERDSpaceDelims=1
 
 " iterm has a non-ascii character font setting
 "set guifont=DroidSansMonoForPowerline\ Nerd\ Font:h11
