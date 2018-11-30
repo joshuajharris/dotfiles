@@ -58,5 +58,3 @@ alias tmuxrc="vim ~/.tmux.conf"
 alias vimrc="vim ~/.vimrc"
 
 alias yt="mpsyt"
-
-alias ackube="source <(kubectl completion zsh)"

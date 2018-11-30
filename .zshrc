@@ -49,7 +49,26 @@ ZSH_THEME=""
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+# plugin descriptions here https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
+plugins=(
+  eks
+  autojump
+  aws
+  command-not-found
+  docker
+  git
+  jira
+  ng
+  npm
+  pip
+  python
+  tmux
+  web-search
+  yarn
+  zsh-syntax-highlighting
+)
+
+ZSH_TMUX_AUTOSTART="true"
 
 # User configuration
 
@@ -87,27 +106,31 @@ source $ZSH/oh-my-zsh.sh
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{exports,aliases,functions}; do
+for file in ~/.{exports,aliases,functions,work}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 
 # eval "$(pyenv init -)"
 
-fpath+=($fpath '/usr/local/lib/node_modules/pure-prompt/functions')
+fpath+=('/home/joshuajharris/n/lib/node_modules/pure-prompt/functions')
 
 autoload -U promptinit; promptinit
 prompt pure
 
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export GOPATH=$HOME/go
-export PATH="$PATH:/usr/local/go/bin:$GOPATH/bin"
+export JAVA_HOME="/usr/lib/jvm/default-java"
+
+export PATH="$PATH:/home/joshuajharris/.local/bin:/usr/local/go/bin:$GOPATH/bin:$JAVA_HOME"
 
 if [[ $OSTYPE == "linux-gnu" ]]; then
   export PATH="$PATH:/snap/bin"
 fi
+
+source /home/joshuajharris/.local/bin/aws_zsh_completer.sh
+
+source /home/joshuajharris/.dvm/dvm.sh
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
@@ -117,3 +140,6 @@ export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PR
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /home/joshuajharris/n/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/joshuajharris/n/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+
+eval $(thefuck --alias)
+# alias fuck='fuck -y'

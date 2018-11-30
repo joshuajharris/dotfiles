@@ -12,7 +12,7 @@
   email = joshua.jharris13@gmail.com
 
 [alias]
-	l = log
+  l = log
   s = status -s
 
 [apply]
@@ -32,3 +32,5 @@ whitespace = fix
 
 	# Automatically correct and execute mistyped commands
 	autocorrect = 1
+[url "git@github.com:"]
+	insteadOf = https://github.com/

@@ -1,6 +1,10 @@
 #!/usr/bin/sh
-#!/
+
 #!/# Create a new directory and enter it
 function mkd() {
-	mkdir -p "$@" && cd "$_";
+  mkdir -p "$@" && cd "$_";
+}
+
+function jwt-decode() {
+  echo "$@" | cut -d. -f2 | base64 --decode | jq
 }

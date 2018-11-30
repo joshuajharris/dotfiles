@@ -18,7 +18,7 @@ filetype plugin indent on   " load plugins and indent files base on filetype
 
 " interface
 set background=dark " tell vim what the background color looks like
-set colorcolumn=100 " show a column at 100 chars
+set colorcolumn=80 " show a column at 100 chars
 set cursorline      " highlight current line
 set laststatus=2    " enables airline on open
 set noshowmode      " airline already shows mode
@@ -92,50 +92,66 @@ nnoremap <leader>a ggVG<CR>
 
 call plug#begin('~/.vim/plugged')
 
-" Theme
-Plug 'morhetz/gruvbox'
-
-Plug 'vim-airline/vim-airline' " Lean & mean status/tabline for vim
-Plug 'vim-airline/vim-airline-themes' " Airline Plugins
-Plug 'junegunn/fzf' " fuzzysearch
+" ====================
+" Language/File Syntax
+" ====================
 Plug 'fatih/vim-go' " golan support
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'pangloss/vim-javascript'
-Plug 'heavenshell/vim-jsdoc'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'} " tree explorer plugin for vim
-Plug 'scrooloose/nerdcommenter'
-Plug 'ervandew/supertab'
-Plug 'tpope/vim-surround' " quoting/parenthesizing made simple
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'Raimondi/delimitMate'
 Plug 'sheerun/vim-polyglot'
-Plug 'airblade/vim-gitgutter'
-Plug 'w0rp/ale'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'maksimr/vim-jsbeautify'
-Plug 'ryanoasis/vim-devicons'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'gorodinskiy/vim-coloresque'
-
 Plug 'leafo/moonscript-vim'
+Plug 'ekalinin/Dockerfile.vim'
 
+" ======
+" Theme
+" ======
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline' " Lean & mean status/tabline for vim
+Plug 'vim-airline/vim-airline-themes' " Airline Plugins
+Plug 'gorodinskiy/vim-coloresque'
+Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'} " tree explorer plugin for vim
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'airblade/vim-gitgutter'
+
+" ==========
+" Formatting
+" ==========
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'maksimr/vim-jsbeautify'
+
+" =========
+" Utilities
+" =========
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround' " quoting/parenthesizing made simple
+Plug 'junegunn/fzf' " fuzzysearch
+Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Raimondi/delimitMate'
+Plug 'w0rp/ale'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'wellle/tmux-complete.vim'
+
+" ============
 " Vim Markdown
+" ============
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/goyo.vim'
 Plug 'reedes/vim-pencil'
-
 Plug 'suan/vim-instant-markdown'
 
 call plug#end()
 
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+
+let g:vim_markdown_folding_disabled = 1
 
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
@@ -146,6 +162,10 @@ let NERDSpaceDelims=1
 " iterm has a non-ascii character font setting
 "set guifont=DroidSansMonoForPowerline\ Nerd\ Font:h11
 
+let g:jsdoc_enable_es6 = 1
+
+nmap <silent> <leader>jsd :JsDoc<CR>
+
 colorscheme gruvbox
 let g:airline_theme='gruvbox'
 
@@ -153,4 +173,20 @@ let g:airline_powerline_fonts = 1
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'python': ['flake8'],
+\   'typescript': ['tslint'],
 \}
+
+" In ~/.vim/vimrc, or somewhere similar.
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'typescript': ['tslint', 'prettier'],
+\   'javascript': ['eslint', 'prettier'],
+\}
+
+let g:ale_fix_on_save = 1
+
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_allow_external_content = 1
+
+let g:ale_open_list = 0
