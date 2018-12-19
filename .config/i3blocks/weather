@@ -1,0 +1,129 @@
+#!/bin/bash
+
+version=1.0
+
+TEST=0
+
+LAT="37.5407"
+LONG="77.4360"
+API_KEY="ed9e2482b13cfe5551319cdda9ef0a06"
+URL="https://api.darksky.net/forecast/$API_KEY/$LAT,$LONG"
+
+getCurrentJson() {
+  if [[ $TEST ]]; then
+    echo '{
+      "time": 1545171791,
+      "summary": "Mostly Cloudy",
+      "icon": "clear-day",
+      "precipIntensity": 0,
+      "precipProbability": 0,
+      "temperature": 20.08,
+      "apparentTemperature": 20.08,
+      "dewPoint": -3.14,
+      "humidity": 0.35,
+      "pressure": 1021.06,
+      "windSpeed": 2.31,
+      "windGust": 2.92,
+      "windBearing": 301,
+      "cloudCover": 0.6,
+      "uvIndex": 0,
+      "visibility": 10,
+      "ozone": 265.76
+    }'
+  else
+    echo $(curl $URL | jq '.currently')
+  fi
+}
+
+getProp() {
+  OBJ="$1"
+  PROP="$2"
+
+  echo $(echo $OBJ | jq -r ".$PROP")
+}
+
+getIconFromText() {
+  case $1 in
+    clear-day)
+      echo ☀️
+      exit
+      ;;
+    clear-night)
+      echo 🌙
+      exit
+      ;;
+    rain)
+      echo 🌧️
+      exit
+      ;;
+    snow)
+      echo ❄️
+      exit
+      ;;
+    sleet)
+      echo 🌨️
+      exit
+      ;;
+    wind)
+      echo 🌬️
+      exit
+      ;;
+    fog)
+      echo 🌫️
+      exit
+      ;;
+    cloudy)
+      echo ☁️
+      exit
+      ;;
+    partly-cloudy-day)
+      echo ⛅
+      exit
+      ;;
+    partly-cloudy-night)
+      echo 🌙
+      exit
+      ;;
+    storm)
+      echo ⛈️
+      exit
+      ;;
+    tornado)
+      echo 🌪️
+      exit
+      ;;
+    *)
+      echo ☀️
+      exit
+      ;;
+  esac
+}
+
+while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do case $1 in
+  -v | --version )
+    echo $version
+    exit
+    ;;
+  -s | --string )
+    shift; string=$1
+    ;;
+  -f | --flag )
+    flag=1
+    ;;
+  -t | --test )
+    TEST=1
+    ;;
+esac; shift; done
+if [[ "$1" == '--' ]]; then shift; fi
+
+CURRENT=$(getCurrentJson)
+
+SUMMARY=$(getProp "$CURRENT" "summary")
+RAW_TEMP=$(getProp "$CURRENT" "temperature")
+UNIT_SYMBOL="f"
+TEMP="$(echo $RAW_TEMP | cut -d'.' -f1)°$UNIT_SYMBOL"
+ICON_TEXT=$(getProp "$CURRENT" "icon")
+ICON=$(getIconFromText "$ICON_TEXT")
+
+echo "$ICON $SUMMARY $TEMP"
+echo "$ICON $TEMP"

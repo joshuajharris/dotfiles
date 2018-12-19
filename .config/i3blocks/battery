@@ -1,0 +1,25 @@
+#!/bin/bash
+
+getColumn() {
+  echo $(echo "$1" | cut -d"," -f$2)
+}
+
+BATTERY_LABEL="🔋"
+CHARGING_LABEL="⚡"
+
+ROW_ID_REGEX="Battery [0-9]\+:[[:space:]]\+"
+ROW=$(acpi | grep "$ROW_ID_REGEX" | sed "s/$ROW_ID_REGEX//g")
+
+STATUS=$(getColumn "$ROW" 1)
+BATTERY=$(getColumn "$ROW" 2)
+
+case $STATUS in
+  Charging)
+    LABEL=$CHARGING_LABEL
+    ;;
+  *)
+    LABEL=$BATTERY_LABEL
+    ;;
+esac
+
+echo "$LABEL $BATTERY"

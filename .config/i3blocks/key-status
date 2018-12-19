@@ -1,0 +1,25 @@
+#!/bin/bash
+get_key_status() {
+  TYPE="$1"
+  echo $(xset q | grep -o "$TYPE Lock:[[:space:]]\+\w[a-z]*\w" | cut -d":" -f2 | sed 's/[[:space:]]\+//')
+}
+
+CAPS=$(get_key_status "Caps")
+NUM=$(get_key_status "Num")
+
+echo "Caps: $CAPS, Num: $NUM"
+echo "Caps: $CAPS, Num: $NUM"
+# get current font color
+echo $(xrdb -query | grep '*.background' | sed 's/[[:space:]]\+//' | cut -d':' -f2)
+
+# not working right now idk why
+case $CAPS in
+  off)
+    echo "#6FF000"
+    ;;
+  on)
+    echo "#FF0000"
+    ;;
+  *)
+    ;;
+esac
