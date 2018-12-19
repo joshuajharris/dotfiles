@@ -34,6 +34,9 @@ interval=1000
 [battery]
 interval=1
 
+[wifi]
+interval=1
+
 [key-status]
 interval=1
 
