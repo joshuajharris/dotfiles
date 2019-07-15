@@ -1,24 +1,39 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/joshuajharris/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME=""
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -39,43 +54,37 @@ ZSH_THEME=""
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# plugin descriptions here https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins
 plugins=(
-  eks
-  autojump
-  aws
-  command-not-found
-  docker
   git
-  jira
-  ng
-  npm
-  pip
-  python
   tmux
-  web-search
-  yarn
   zsh-syntax-highlighting
 )
 
 ZSH_TMUX_AUTOSTART="true"
 
+source $ZSH/oh-my-zsh.sh
+
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/n/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+for file in ~/.{exports,aliases,functions}; do
+  [ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
 
-source $ZSH/oh-my-zsh.sh
+# export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -90,8 +99,8 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+autoload -U promptinit; promptinit
+prompt pure
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -101,45 +110,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-
-# Load the shell dotfiles, and then some:
-# * ~/.path can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{exports,aliases,functions,work}; do
-  [ -r "$file" ] && [ -f "$file" ] && source "$file";
-done;
-
-# eval "$(pyenv init -)"
-
-fpath+=('/home/joshuajharris/n/lib/node_modules/pure-prompt/functions')
-
-autoload -U promptinit; promptinit
-prompt pure
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export GOPATH=$HOME/go
-export JAVA_HOME="/usr/lib/jvm/default-java"
 
-export PATH="$PATH:/home/joshuajharris/.local/bin:/usr/local/go/bin:$GOPATH/bin:$JAVA_HOME"
+export PATH="$PATH:/$GOPATH/bin"
 
-if [[ $OSTYPE == "linux-gnu" ]]; then
-  export PATH="$PATH:/snap/bin"
-fi
-
-source /home/joshuajharris/.local/bin/aws_zsh_completer.sh
-
-source /home/joshuajharris/.dvm/dvm.sh
-
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /home/joshuajharris/n/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/joshuajharris/n/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /home/joshuajharris/n/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /home/joshuajharris/n/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-
-eval $(thefuck --alias)
-# alias fuck='fuck -y'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
