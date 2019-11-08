@@ -18,21 +18,18 @@ filetype plugin indent on   " load plugins and indent files base on filetype
 
 " interface
 set background=dark " tell vim what the background color looks like
-set colorcolumn=80 " show a column at 100 chars
+set colorcolumn=80 " show a column at 80 chars
 set cursorline      " highlight current line
-set laststatus=2    " enables airline on open
-set noshowmode      " airline already shows mode
+set laststatus=2    " always display the status line
+set noshowmode      " Don't show current vim mode in status line -> e.g. -- INSERT --
 set number          " show line numbers
-" set relativenumber  " show relative line numbers
-set ruler           " show current position at the bottom"
+set ruler           " show current position at the right side of statusline
 set scrolloff=5     " keep at least 5 lines above/below
-" set shortmess+=aAIsT " disable welcome screen and other messages
 set showcmd         " show command in bottom bar
 set sidescroll=1    " smoother horizontal scrolling
 set sidescrolloff=5 " keep at least 5 lines left/right
 set splitbelow      " create new splits below
 set splitright      " create new splits to the right
-" set termguicolors   " enable true colors
 set wildmenu        " visual autocomplete for command menu
 
 " whitespace
@@ -63,6 +60,10 @@ set nowritebackup   " don't save a backup while editing
 
 set encoding=utf8
 
+set updatetime=300 " You will have bad experience for diagnostic messages when it's default 4000.
+set signcolumn=yes " always show signcolumns
+set cmdheight=2 " Better display for messages
+
 "=============================================================================================
 " Keys
 "=============================================================================================
@@ -86,6 +87,8 @@ vnoremap > >gv
 " select all
 nnoremap <leader>a ggVG<CR>
 
+set termguicolors
+
 "=============================================================================================
 " Plugins
 "=============================================================================================
@@ -95,14 +98,8 @@ call plug#begin('~/.vim/plugged')
 " ====================
 " Language/File Syntax
 " ====================
-Plug 'fatih/vim-go' " golan support
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
-Plug 'cakebaker/scss-syntax.vim'
+Plug 'andreshazard/vim-freemarker'
 Plug 'sheerun/vim-polyglot'
-Plug 'leafo/moonscript-vim'
-Plug 'ekalinin/Dockerfile.vim'
 
 " ======
 " Theme
@@ -129,13 +126,19 @@ Plug 'maksimr/vim-jsbeautify'
 " =========
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround' " quoting/parenthesizing made simple
-Plug 'junegunn/fzf' " fuzzysearch
-Plug 'ervandew/supertab'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Raimondi/delimitMate'
-Plug 'w0rp/ale'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dense-analysis/ale'
 Plug 'wellle/tmux-complete.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'mbbill/undotree'
+Plug 'junegunn/vim-peekaboo'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+Plug 'ludovicchabant/vim-gutentags'
 
 " ============
 " Vim Markdown
@@ -153,40 +156,82 @@ let NERDTreeShowHidden=1
 
 let g:vim_markdown_folding_disabled = 1
 
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-let g:airline#extensions#tabline#enabled = 1
-
 let NERDSpaceDelims=1
 
-" iterm has a non-ascii character font setting
-"set guifont=DroidSansMonoForPowerline\ Nerd\ Font:h11
-
 let g:jsdoc_enable_es6 = 1
+
+let g:javascript_plugin_jsdoc = 1
 
 nmap <silent> <leader>jsd :JsDoc<CR>
 
 colorscheme gruvbox
 let g:airline_theme='gruvbox'
-
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['flake8'],
-\   'typescript': ['tslint'],
+\   'typescript': ['tsserver', 'prettier'],
 \}
 
 " In ~/.vim/vimrc, or somewhere similar.
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'typescript': ['tslint', 'prettier'],
 \   'javascript': ['eslint', 'prettier'],
+\   'typescript': ['tslint', 'prettier'],
 \}
 
 let g:ale_fix_on_save = 1
 
+let g:ale_open_list = 0
+" let g:ale_sign_error =
+" let g:ale_sign_warning =
+
 let g:instant_markdown_autostart = 0
 let g:instant_markdown_allow_external_content = 1
 
-let g:ale_open_list = 0
+nnoremap <C-p> :Files<CR>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>h :History<CR>
+nnoremap <Leader>t :BTags<CR>
+nnoremap <Leader>T :Tags<CR>
+
+"=============================================================================================
+" COC
+"=============================================================================================
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+set complete+=kspell " Enable word completion
+au BufRead,BufNewFile,BufReadPost *.json set syntax=json
+
+let g:coc_global_extensions = [
+  \ 'coc-json',
+  \ 'coc-tsserver',
+  \ 'coc-html',
+  \ 'coc-css',
+  \ 'coc-yaml',
+  \ 'coc-highlight',
+  \ 'coc-snippets',
+  \ 'coc-git',
+  \ 'coc-svg',
+  \ 'coc-angular',
+  \ 'coc-xml',
+  \ 'coc-markdownlint',
+\]

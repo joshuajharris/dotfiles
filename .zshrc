@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/joshuajharris/.oh-my-zsh"
+export ZSH="/Users/$USER/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -69,12 +69,30 @@ ZSH_THEME=""
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  aws
+  compleat
+  docker
   git
+  git-extras
+  git-open
+  jira
+  mvn
+  ng
+  node
+  npm
+  osx
+  python
+  rand-quote
   tmux
+  vi-mode
+  web-search
   zsh-syntax-highlighting
 )
 
 ZSH_TMUX_AUTOSTART="true"
+
+JIRA_URL="https://authxconsulting.atlassian.net"
+JIRA_NAME="Joshua Harris"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -87,7 +105,8 @@ done;
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -98,6 +117,8 @@ done;
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+eval $(thefuck --alias)
 
 autoload -U promptinit; promptinit
 prompt pure
@@ -111,8 +132,18 @@ prompt pure
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export GOPATH=$HOME/go
+source $HOME/.cargo/env
 
-export PATH="$PATH:/$GOPATH/bin"
+export MY_SCRIPTS=$HOME/.local
+export GOPATH=$HOME/go
+export PYTHON3=$HOME/Library/Python/3.7
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+LESSPIPE=`which src-hilite-lesspipe.sh`
+export LESSOPEN="| ${LESSPIPE} %s"
+export LESS=' -R -X -F -N'
+
+export PATH="$PATH:/$MY_SCRIPTS/bin:/$GOPATH/bin:$PYTHON3/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
